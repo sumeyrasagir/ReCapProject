@@ -13,7 +13,7 @@ namespace ConsoleUI
             //CarTest();
             //ColorTest();
             //BrandTest();
-            //CarDetailTest();
+            CarDetailTest();
             //AraçEkleme();
 
 
@@ -29,9 +29,18 @@ namespace ConsoleUI
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            foreach (var car in carManager.GetCarDetailDtos())
+            var result = carManager.GetCarDetailDtos();
+
+            if (result.Success==true)
             {
-                Console.WriteLine("{0}, {1}, {2}, {3}", car.Id, car.BrandName, car.ColorName, car.DailyPrice);
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine("{0}, {1}, {2}, {3}", car.Id, car.BrandName, car.ColorName, car.DailyPrice);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
             }
         }
 
@@ -39,9 +48,18 @@ namespace ConsoleUI
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
 
-            foreach (var brand in brandManager.GetAll())
+            var result = brandManager.GetAll();
+
+            if (result.Success==true)
             {
-                Console.WriteLine(brand.BrandName);
+                foreach (var brand in result.Data)
+                {
+                    Console.WriteLine(brand.BrandName);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
             }
         }
 
@@ -49,9 +67,18 @@ namespace ConsoleUI
         {
             ColorManager colorManager = new ColorManager(new EfColorDal());
 
-            foreach (var color in colorManager.GetAll())
+            var result = colorManager.GetAll();
+
+            if (result.Success==true)
             {
-                Console.WriteLine(color.ColorName);
+                foreach (var color in result.Data)
+                {
+                    Console.WriteLine(color.ColorName);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
             }
         }
 
@@ -59,16 +86,26 @@ namespace ConsoleUI
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            foreach (var car in carManager.GetCarsByBrandId(3))
+            var result = carManager.GetCarsByBrandId(3);
+
+            if (result.Success==true)
             {
-                Console.WriteLine(car.Description);
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine(car.Description);
+                }
             }
 
             Console.WriteLine("-------------------------------------");
 
-            foreach (var car in carManager.GetCarsByColorId(1))
+            var result1 = carManager.GetCarsByColorId(1);
+
+            if (result1.Success==true)
             {
-                Console.WriteLine(car.Description);
+                foreach (var car in result1.Data)
+                {
+                    Console.WriteLine(car.Description);
+                }
             }
         }
     }

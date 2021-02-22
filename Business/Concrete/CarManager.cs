@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Result;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -17,56 +19,53 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
-            if (car.Description.Length>=2 && car.DailyPrice>0)
+            if (car.Description.Length<2 && car.DailyPrice<=0)
             {
-                _carDal.Add(car);
-                Console.WriteLine("Araba eklendi");
+                return new ErrorResult(Messages.ProductNameInvalid + "/" + Messages.ProductPrice);
             }
-            else
-            {
-                Console.WriteLine("Günlük ücret 0'dan büyük olmalı ve Araba ismi en az iki karakterden oluşmalıdır !");
-            }
+
+            _carDal.Add(car);
+            return new SuccessResult(Messages.ProductAdded);
+           
         }
 
-        public void Delete(Car car)
+        public IResult Delete(Car car)
         {
             _carDal.Delete(car);
-            Console.WriteLine("Araba silindi");
+            return new SuccessResult(Messages.ProductDeleted);
         }
 
-        public List<Car> GetAll()
+        public IDataResult<List<Car>> GetAll()
         {
-            return _carDal.GetAll();
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.ProductsListed);
         }
 
-        public List<CarDetailDto> GetCarDetailDtos()
+        public IDataResult<List<CarDetailDto>> GetCarDetailDtos()
         {
-            return _carDal.GetCarDetails();
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
         }
 
-        public List<Car> GetCarsByBrandId(int brandId)
+        public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
         {
-            return _carDal.GetAll(c => c.BrandId == brandId);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == brandId));
         }
 
-        public List<Car> GetCarsByColorId(int colorId)
+        public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
-            return _carDal.GetAll(c => c.ColorId == colorId);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == colorId));
         }
 
-        public void Update(Car car)
+        public IResult Update(Car car)
         {
-            if (car.Description.Length >= 2 && car.DailyPrice > 0)
+            if (car.Description.Length < 2 && car.DailyPrice <= 0)
             {
-                _carDal.Add(car);
-                Console.WriteLine("Araba güncellendi");
+                return new ErrorResult(Messages.ProductNameInvalid + "/" + Messages.ProductPrice);
             }
-            else
-            {
-                Console.WriteLine("Günlük ücret 0'dan büyük olmalı ve Araba ismi en az iki karakterden oluşmalıdır !");
-            }
+
+            _carDal.Update(car);
+            return new SuccessResult(Messages.ProductUpdated);
         }
     }
 }
