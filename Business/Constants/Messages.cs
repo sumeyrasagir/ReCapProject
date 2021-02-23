@@ -13,5 +13,7 @@ namespace Business.Constants
         public static string ProductPrice = "Ürünün fiyatı 0'dan büyük olmalıdır";
         public static string ProductDeleted = "Ürün silindi";
         public static string ProductUpdated = "Ürün güncellendi";
+        public static string TimeError = "Araç henüz teslim edilmemiş";
+        public static string CarRented = "Araç kiralandı";
     }
 }

@@ -13,10 +13,32 @@ namespace ConsoleUI
             //CarTest();
             //ColorTest();
             //BrandTest();
-            CarDetailTest();
+            //CarDetailTest();
             //AraçEkleme();
+            RentalDetailTest();
 
+            
+        }
 
+       
+
+        private static void RentalDetailTest()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+            var result = rentalManager.GetRentalDetailDtos();
+
+            if (result.Success == true)
+            {
+                foreach (var rental in result.Data)
+                {
+                    Console.WriteLine("{0}, {1}, {2}, {3}", rental.RentalId, rental.UserName, rental.CustomerName, rental.BrandName, rental.RentDate, rental.ReturnDate);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
         }
 
         private static void AraçEkleme()
