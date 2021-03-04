@@ -15,5 +15,7 @@ namespace Business.Constants
         public static string ProductUpdated = "Ürün güncellendi";
         public static string TimeError = "Araç henüz teslim edilmemiş";
         public static string CarRented = "Araç kiralandı";
+        public static string CarImageAdded = "Araç resmi eklendi";
+        public static string CarImageLimitExceded = "Bu aracın resim kapasitesi dolu";
     }
 }
