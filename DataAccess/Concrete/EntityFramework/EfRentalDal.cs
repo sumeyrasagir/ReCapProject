@@ -25,7 +25,7 @@ namespace DataAccess.Concrete.EntityFramework
                              join brand in context.Brands
                              on car.BrandId equals brand.BrandId
                              join user in context.Users
-                             on customer.UserId equals user.UserId
+                             on customer.UserId equals user.Id
                              select new RentalDetailDto
                              {
                                  RentalId = rental.RentalId,
