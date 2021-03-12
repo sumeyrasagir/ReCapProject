@@ -30,8 +30,9 @@ namespace DataAccess.Concrete.EntityFramework
                              {
                                  RentalId = rental.RentalId,
                                  BrandName = brand.BrandName,
-                                 CustomerName = customer.CompanyName,
-                                 UserName = user.FirstName + " " + user.LastName,
+                                 CompanyName = customer.CompanyName,
+                                 FirstName = user.FirstName,
+                                 LastName = user.LastName,
                                  RentDate = rental.RentDate,
                                  ReturnDate = (DateTime)rental.ReturnDate
                              };
