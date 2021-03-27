@@ -15,56 +15,56 @@ namespace ConsoleUI
             //BrandTest();
             //CarDetailTest();
             //AraçEkleme();
-            RentalDetailTest();
+            //RentalDetailTest();
 
             
         }
 
        
 
-        private static void RentalDetailTest()
-        {
-            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+        //private static void RentalDetailTest()
+        //{
+        //    RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
-            var result = rentalManager.GetRentalDetailDtos();
+        //    var result = rentalManager.GetRentalDetailDtos();
 
-            if (result.Success == true)
-            {
-                foreach (var rental in result.Data)
-                {
-                    Console.WriteLine("{0}, {1}, {2}, {3}", rental.RentalId, rental.UserName, rental.CustomerName, rental.BrandName, rental.RentDate, rental.ReturnDate);
-                }
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
-        }
+        //    if (result.Success == true)
+        //    {
+        //        foreach (var rental in result.Data)
+        //        {
+        //            Console.WriteLine("{0}, {1}, {2}, {3}", rental.RentalId, rental.UserName, rental.CustomerName, rental.BrandName, rental.RentDate, rental.ReturnDate);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine(result.Message);
+        //    }
+        //}
 
-        private static void AraçEkleme()
-        {
-            CarManager carManager = new CarManager(new EfCarDal());
-            carManager.Add(new Car() { BrandId = 1, ColorId = 2, ModelYear = 2020, DailyPrice = 980, Description = "Premium araç" });
-        }
+        //private static void AraçEkleme()
+        //{
+        //    CarManager carManager = new CarManager(new EfCarDal());
+        //    carManager.Add(new Car() { BrandId = 1, ColorId = 2, ModelYear = 2020, DailyPrice = 980, Description = "Premium araç" });
+        //}
 
-        private static void CarDetailTest()
-        {
-            CarManager carManager = new CarManager(new EfCarDal());
+        //private static void CarDetailTest()
+        //{
+        //    CarManager carManager = new CarManager(new EfCarDal());
 
-            var result = carManager.GetCarDetailDtos();
+        //    var result = carManager.GetCarDetailDtos();
 
-            if (result.Success==true)
-            {
-                foreach (var car in result.Data)
-                {
-                    Console.WriteLine("{0}, {1}, {2}, {3}", car.Id, car.BrandName, car.ColorName, car.DailyPrice);
-                }
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
-        }
+        //    if (result.Success==true)
+        //    {
+        //        foreach (var car in result.Data)
+        //        {
+        //            Console.WriteLine("{0}, {1}, {2}, {3}", car.Id, car.BrandName, car.ColorName, car.DailyPrice);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine(result.Message);
+        //    }
+        //}
 
         private static void BrandTest()
         {
