@@ -16,15 +16,5 @@
     <ProjectReference Include="..\Entities\Entities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\Images\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\Images\2ae82a27-0e41-42fe-93a5-023c7958a78c_3_15_2021.png" />
-    <None Include="wwwroot\Images\99fc4981-b3ea-42d0-be5a-96102cd44e07_3_15_2021.png" />
-    <None Include="wwwroot\Images\a2eeae8c-75e3-404b-9f55-873569e65eeb_3_15_2021.png" />
-  </ItemGroup>
-
 
 </Project>
